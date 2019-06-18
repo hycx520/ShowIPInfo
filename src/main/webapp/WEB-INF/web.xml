@@ -4,7 +4,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name></display-name>
-
 	<!-- 404错误拦截 -->
 	<error-page>
 		<error-code>404</error-code>
@@ -15,47 +14,22 @@
 		<error-code>500</error-code>
 		<location>/error500.jsp</location>
 	</error-page>
-
-	<!-- 加载spring容器 -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>WEB-INF/classes/spring/applicationContext-*.xml</param-value>
-	</context-param>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-
-	<!-- 配置前端控制器 -->
-	<servlet>
-		<servlet-name>spring</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<!-- ContextconfigLocation配置springmvc加载的配置文件适配器、处理映射器等 -->
-			<param-name>contextConfigLocation</param-name>
-			<param-value>WEB-INF/classes/spring/springmvc.xml</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>spring</servlet-name>
-		<!-- 1、.action访问以.action结尾的 由DispatcherServlet进行解析 2、/,所有访问都由DispatcherServlet进行解析 -->
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-
-	<!-- 解决post乱码问题的过滤器 -->
-	<filter>
-		<filter-name>CharacterEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>utf-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>CharacterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	<servlet>
+		<servlet-name>HelloServlet</servlet-name>
+		<servlet-class>controller.loginControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HelloServlet</servlet-name>
+		<url-pattern>/controller/loginControl</url-pattern>
+	</servlet-mapping>
+https://www.cnblogs.com/wxisme/p/4924561.html
+
+
+
+
+
+
 </web-app>
