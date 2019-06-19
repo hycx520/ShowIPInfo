@@ -1,4 +1,4 @@
-package com.sc.JDBC;
+package com.sc.Dao;
 
 public class JDBCConnect {
 
