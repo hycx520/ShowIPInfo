@@ -1,18 +1,24 @@
 package com.sc.Controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class HellowController
 {
+	static Logger logger = (Logger) LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
 	public HellowController() {
-		System.out.println("---");
+
 	}
     @RequestMapping("/login")
-    public String helloGet() throws Exception
+    public ModelAndView helloGet() throws Exception
     {
-    	System.out.println("--");
-        return "index.jsp";
+    	
+    	logger.info("进入登录页面");
+    	ModelAndView mv=new ModelAndView();
+    	mv.setViewName("login");
+    	return mv;
     }
 }
