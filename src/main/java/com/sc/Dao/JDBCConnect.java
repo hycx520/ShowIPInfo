@@ -15,6 +15,9 @@ import org.apache.logging.log4j.core.Logger;
 public class JDBCConnect {
 	    static Logger logger = (Logger) LogManager.getLogger(LogManager.ROOT_LOGGER_NAME);
 	    static String jdbcProperties="src/main/resources/jdbc.properties";
+	    /**
+	     * 针对select语句返回resultset对象
+	     * */
 		public static ResultSet SQLConnectForSelect(String SQL) throws SQLException{
 			InputStream in=null;
 			try {
@@ -61,6 +64,7 @@ public class JDBCConnect {
 			}finally {
 				// 6.关闭资源
 				conn.close();
+				logger.info("资源关闭");
 			}
 			return rs;
 		}
@@ -108,17 +112,18 @@ public class JDBCConnect {
 				conn.close();
 				stat.close();
 				rs.close();
+				logger.info("资源关闭");
 			}
 			logger.info("SQL执行成功");
 			return a;
 		}
 		public static void main(String[] args) {
 			try {
-				System.out.println(SQLConnectForOther("insert into TEST values ('5','孙吴','22','江苏省')"));
-				System.out.println(SQLConnectForSelect("select * from TEST"));
+				logger.info(SQLConnectForOther("insert into TEST values ('5','孙吴','22','江苏省')"));
+				logger.info(SQLConnectForSelect("select * from TEST"));
+				
 			} catch (SQLException e) {
-
-				e.printStackTrace();
+				logger.error(e);
 			}
 		}
 
