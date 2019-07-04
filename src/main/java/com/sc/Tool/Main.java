@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Main extends Thread{
 	public static void main(String[] args) {
+		System.out.println("---");
 		Thread th = new Main();
 		Thread th1 = new Main();
 		Thread th2 = new Main();
